@@ -23,7 +23,6 @@ class EventListener implements Listener
         $plot = $event->getPlot();
         $pr = PlotRate::getInstance();
         $plotString = $pr->returnPlotString($plot);
-        print_r($plotString . "\n");
         if ($pr->isRated2($plotString) == true) {
             $plotRate = $pr->getPlotRate($plotString);
             if ($plotRate === null) {

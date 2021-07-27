@@ -145,7 +145,6 @@ class PlotRate extends PluginBase
     public function isRated2(string $plotString): bool
     {
         $isRated = $this->getRateList()->exists($plotString);
-        print_r($isRated ? "true--\n" : "--false\n");
         return $isRated;
     }
 
