@@ -1,0 +1,8 @@
+# PlotRate V1.0.0 by supercrafter333, licensed under Apache License 2.0!
+#######
+# Messages
+not-in-plot: "§cYou're not standing into a plot!"
+rated: "§aYou've successfully rated this plot! §7(§eRating: §b{rating}§7)"
+unrated: "§aYou've successfully removed the rating of this plot!"
+rating-edited: "§aYou've successfully updated the rating of this plot! §7(§eRating: §b{rating}§7)"
+not-rated: "§cThis plot isn't rated!"

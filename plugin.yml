@@ -1,0 +1,18 @@
+name: PlotRate
+version: 1.0.0
+api: 3.0.0
+main: supercrafter333\PlotRate\PlotRate
+author: supercrafter333
+load: POSTWORLD
+depend: MyPlot
+
+permissions:
+  plotrate.admin:
+    default: op
+    children:
+      plotrate.rate.cmd:
+        default: op
+      plotrate.unrate.cmd:
+        default: op
+      plotrate.editrating.cmd:
+        default: op
