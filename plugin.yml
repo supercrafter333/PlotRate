@@ -16,3 +16,5 @@ permissions:
         default: op
       plotrate.editrating.cmd:
         default: op
+      plotrate.plotrate.cmd:
+        default: op
