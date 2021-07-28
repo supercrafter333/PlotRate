@@ -4,5 +4,6 @@ branches:
 - master
 projects:
   PlotRate:
+    icon: "icon.png"
     path: ""
 ...

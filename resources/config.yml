@@ -6,3 +6,9 @@ rated: "§aYou've successfully rated this plot! §7(§eRating: §b{rating}§7)"
 unrated: "§aYou've successfully removed the rating of this plot!"
 rating-edited: "§aYou've successfully updated the rating of this plot! §7(§eRating: §b{rating}§7)"
 not-rated: "§cThis plot isn't rated!"
+only-IG: "Please run this command In-Game!"
+pr-a-success: "§aYou was successfully teleported to plot §7{plot}§a of §7{owner}§a!"
+pr-a-noMatches: "§cThere's no player on a plot!"
+
+#DON'T CHANGE THIS!!
+version: "1.1.0"

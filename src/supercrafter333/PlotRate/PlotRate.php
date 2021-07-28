@@ -6,6 +6,7 @@ use MyPlot\Plot;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
 use supercrafter333\PlotRate\Commands\EditratingCommand;
+use supercrafter333\PlotRate\Commands\PlotRateCommand;
 use supercrafter333\PlotRate\Commands\RateCommand;
 use supercrafter333\PlotRate\Commands\UnrateCommand;
 
@@ -15,6 +16,13 @@ use supercrafter333\PlotRate\Commands\UnrateCommand;
  */
 class PlotRate extends PluginBase
 {
+
+    /**
+     * That's the version of PlotRate.
+     *
+     * @var string|float
+     */
+    public const VERSION = "1.1.0";
 
     /**
      * @var self
@@ -28,6 +36,7 @@ class PlotRate extends PluginBase
     {
         self::$instance = $this;
         $this->saveResource("config.yml");
+        $this->versionCheck(self::VERSION); //UPDATE: true
     }
 
     /**
@@ -40,6 +49,7 @@ class PlotRate extends PluginBase
         $myPlotCmds->loadSubCommand(new RateCommand($this));
         $myPlotCmds->loadSubCommand(new EditratingCommand($this));
         $myPlotCmds->loadSubCommand(new UnrateCommand($this));
+        $this->getServer()->getCommandMap()->register("PlotRate", new PlotRateCommand());
     }
 
     /**
@@ -51,6 +61,27 @@ class PlotRate extends PluginBase
         $myPlotCmds->unloadSubCommand("rate");
         $myPlotCmds->unloadSubCommand("editrating");
         $myPlotCmds->unloadSubCommand("unrate");
+    }
+
+    /**
+     * Check the version of PlotRate.
+     *
+     * @param $version
+     * @param bool $update
+     */
+    private function versionCheck($version, bool $update = true)
+    {
+        if (!$this->getConfig()->exists("version") || $this->getConfig()->get("version") !== $version) {
+            if ($update == true) {
+                $this->getLogger()->debug("OUTDATED CONFIG.YML!! You config.yml is outdated! Your config.yml will automatically updated!");
+                if (file_exists($this->getDataFolder() . "oldConfig.yml")) unlink($this->getDataFolder() . "oldConfig.yml");
+                rename($this->getDataFolder() . "config.yml", $this->getDataFolder() . "oldConfig.yml");
+                $this->saveResource("config.yml");
+                $this->getLogger()->debug("config.yml Updated for version: §b$version");
+            } else {
+                $this->getLogger()->warning("Your config.yml is outdated but that's not so bad.");
+            }
+        }
     }
 
     /**
