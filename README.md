@@ -7,7 +7,7 @@ This plugin only works with [MyPlot](https://poggit.pmmp.io/p/MyPlot) by [jasonw
 
 This plugin will be better from time to time. Please send feature requests if you will a new feature on PlotRate. I'll try to add all feature requests.
 
-Please leave a star if you like PlotRate. Have fun!
+Please leave a star if you like PlotRate. Have fun! <3
 
 ### Features
 - rate your plots on your plotworld very easy
