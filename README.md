@@ -12,7 +12,7 @@ Please leave a star if you like PlotRate. Have fun!
 ### Features
 - rate your plots on your plotworld very easy
 - random plot teleport ([#1](https://github.com/supercrafter333/PlotRate/issues/1))
-- simple configuration
+- simple configuratio
 
 ### TODOs
 - [X] random plot teleport ([#1](https://github.com/supercrafter333/PlotRate/issues/1))
