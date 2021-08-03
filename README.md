@@ -1,5 +1,5 @@
 [![Discord](https://img.shields.io/badge/chat-on%20discord-7289da.svg)](https://discord.gg/ca6cWPpERp)
-# PlotRate - V1.1.0   [![](https://poggit.pmmp.io/shield.state/PlotRate)](https://poggit.pmmp.io/p/theSpawn) [![](https://poggit.pmmp.io/shield.dl.total/PlotRate)](https://poggit.pmmp.io/p/PlotRate)
+# PlotRate - V1.1.1   [![](https://poggit.pmmp.io/shield.state/PlotRate)](https://poggit.pmmp.io/p/theSpawn) [![](https://poggit.pmmp.io/shield.dl.total/PlotRate)](https://poggit.pmmp.io/p/PlotRate)
 
 **With this simple plugin you can rate the plots on your plotworld. When a player walk over a rated plot, a title with the reting will send to the player.**
 

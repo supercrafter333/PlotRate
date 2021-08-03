@@ -2,7 +2,9 @@
 
 namespace supercrafter333\PlotRate;
 
+use MyPlot\events\MyPlotClearEvent;
 use MyPlot\events\MyPlotPlayerEnterPlotEvent;
+use MyPlot\events\MyPlotResetEvent;
 use pocketmine\event\Listener;
 
 /**
@@ -42,5 +44,25 @@ class EventListener implements Listener
                 $player->sendTitle("§e★★★★★");
             }
         }
+    }
+
+    /**
+     * @param MyPlotClearEvent $event
+     */
+    public function onPlotClear(MyPlotClearEvent $event)
+    {
+        $plot = $event->getPlot();
+        $pr = PlotRate::getInstance();
+        $pr->unratePlot($plot);
+    }
+
+    /**
+     * @param MyPlotResetEvent $event
+     */
+    public function onPlotReset(MyPlotResetEvent $event)
+    {
+        $plot = $event->getPlot();
+        $pr = PlotRate::getInstance();
+        $pr->unratePlot($plot);
     }
 }

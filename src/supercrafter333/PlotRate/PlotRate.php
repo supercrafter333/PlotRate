@@ -22,7 +22,7 @@ class PlotRate extends PluginBase
      *
      * @var string|float
      */
-    public const VERSION = "1.1.0";
+    public const VERSION = "1.1.1";
 
     /**
      * @var self
@@ -36,7 +36,7 @@ class PlotRate extends PluginBase
     {
         self::$instance = $this;
         $this->saveResource("config.yml");
-        $this->versionCheck(self::VERSION); //UPDATE: true
+        $this->versionCheck(self::VERSION, false); //UPDATE: false
     }
 
     /**

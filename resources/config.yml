@@ -11,4 +11,4 @@ pr-a-success: "§aYou was successfully teleported to plot §7{plot}§a of §7{ow
 pr-a-noMatches: "§cThere's no player on a plot!"
 
 #DON'T CHANGE THIS!!
-version: "1.1.0"
+version: "1.1.1"
