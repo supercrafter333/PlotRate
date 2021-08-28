@@ -27,7 +27,7 @@ class PlotRate extends PluginBase
     /**
      * @var self
      */
-    protected static $instance;
+    protected static PlotRate $instance;
 
     /**
      * On plugin loading. (That's before enabling)
@@ -36,7 +36,7 @@ class PlotRate extends PluginBase
     {
         self::$instance = $this;
         $this->saveResource("config.yml");
-        $this->versionCheck(self::VERSION, false); //UPDATE: false
+        $this->versionCheck(false); //UPDATE: false
     }
 
     /**
@@ -66,18 +66,17 @@ class PlotRate extends PluginBase
     /**
      * Check the version of PlotRate.
      *
-     * @param $version
      * @param bool $update
      */
-    private function versionCheck($version, bool $update = true)
+    private function versionCheck(bool $update = true)
     {
-        if (!$this->getConfig()->exists("version") || $this->getConfig()->get("version") !== $version) {
+        if (!$this->getConfig()->exists("version") || $this->getConfig()->get("version") !== self::VERSION) {
             if ($update == true) {
                 $this->getLogger()->debug("OUTDATED CONFIG.YML!! You config.yml is outdated! Your config.yml will automatically updated!");
                 if (file_exists($this->getDataFolder() . "oldConfig.yml")) unlink($this->getDataFolder() . "oldConfig.yml");
                 rename($this->getDataFolder() . "config.yml", $this->getDataFolder() . "oldConfig.yml");
                 $this->saveResource("config.yml");
-                $this->getLogger()->debug("config.yml Updated for version: §b$version");
+                $this->getLogger()->debug("config.yml Updated for version: §b" . (self::VERSION) . "");
             } else {
                 $this->getLogger()->warning("Your config.yml is outdated but that's not so bad.");
             }
@@ -132,9 +131,9 @@ class PlotRate extends PluginBase
 
     /**
      * @param string $plotString
-     * @return mixed|null
+     * @return mixed
      */
-    public function getPlotZ(string $plotString)
+    public function getPlotZ(string $plotString): mixed
     {
         if ($this->isRated2($plotString)) return $this->getPlotStringVals($plotString)[1];
         return null;
@@ -142,9 +141,9 @@ class PlotRate extends PluginBase
 
     /**
      * @param string $plotString
-     * @return mixed|null
+     * @return mixed
      */
-    public function getPlotLevelName(string $plotString)
+    public function getPlotLevelName(string $plotString): mixed
     {
         if ($this->isRated2($plotString)) return $this->getPlotStringVals($plotString)[2];
         return null;
@@ -152,9 +151,9 @@ class PlotRate extends PluginBase
 
     /**
      * @param string $plotString
-     * @return bool|mixed|null
+     * @return mixed
      */
-    public function getPlotRate(string $plotString)
+    public function getPlotRate(string $plotString): mixed
     {
         if ($this->isRated2($plotString)) return $this->getRateList()->get($plotString);
         return null;
@@ -175,8 +174,7 @@ class PlotRate extends PluginBase
      */
     public function isRated2(string $plotString): bool
     {
-        $isRated = $this->getRateList()->exists($plotString);
-        return $isRated;
+        return $this->getRateList()->exists($plotString);
     }
 
     /**
