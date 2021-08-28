@@ -76,7 +76,7 @@ class RateCommand extends SubCommand
             $s->sendMessage("§4Use: §r/p rate <rating: 0-5>");
             return true;
         }
-        if ($args[0] < 0 || $args[0] >= 5) {
+        if ($args[0] < 0 || $args[0] > 5) {
             $s->sendMessage("§4Use: §r/p rate <rating: 0-5>");
             return true;
         }
