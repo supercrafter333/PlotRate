@@ -22,7 +22,7 @@ class PlotRate extends PluginBase
      *
      * @var string|float
      */
-    public const VERSION = "1.1.1";
+    public const VERSION = "1.1.2";
 
     /**
      * @var self
