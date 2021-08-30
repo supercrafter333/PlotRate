@@ -83,7 +83,7 @@ class PlotRateCommand extends Command implements PluginIdentifiableCommand
                 $player = $pl->getServer()->getPlayer($playerName);
                 $plot = MyPlot::getInstance()->getPlotByPosition($player);
                 $s->teleport($player);
-                $s->sendMessage(str_replace(["{plot}", "{owner}"], [$plot->X . ';' . $plot->Z, $plot->owner], $cfg->get("pr-a-success")));
+                $s->sendMessage(str_replace(["{plot}", "{owner}"], [(string)$plot->X . ';' . (string)$plot->Z, $plot->owner], $cfg->get("pr-a-success")));
                 return;
                 break;
             case "info":

@@ -76,14 +76,14 @@ class EditratingCommand extends SubCommand
             $s->sendMessage("§4Use: §r/p editrating <rating: 0-5>");
             return true;
         }
-        if ($args[0] < 0 || $args[0] > 5) {
+        if ((int)$args[0] < 0 || (int)$args[0] > 5) {
             $s->sendMessage("§4Use: §r/p editrating <rating: 0-5>");
             return true;
         }
         $plot = MyPlot::getInstance()->getPlotByPosition($s);
         if ($plot instanceof Plot) {
-            PlotRate::getInstance()->ratePlot($plot, $args[0]);
-            $s->sendMessage(str_replace("{rating}", $args[0], PlotRate::getInstance()->getConfig()->get("rating-edited")));
+            PlotRate::getInstance()->ratePlot($plot, (int)$args[0]);
+            $s->sendMessage(str_replace("{rating}", (string)$args[0], PlotRate::getInstance()->getConfig()->get("rating-edited")));
             return true;
         } else {
             $s->sendMessage(PlotRate::getInstance()->getConfig()->get("not-in-plot"));

@@ -76,18 +76,17 @@ class RateCommand extends SubCommand
             $s->sendMessage("§4Use: §r/p rate <rating: 0-5>");
             return true;
         }
-        if ($args[0] < 0 || $args[0] > 5) {
+        if ((int)$args[0] < 0 || (int)$args[0] > 5) {
             $s->sendMessage("§4Use: §r/p rate <rating: 0-5>");
             return true;
         }
         $plot = MyPlot::getInstance()->getPlotByPosition($s);
         if ($plot instanceof Plot) {
-            PlotRate::getInstance()->ratePlot($plot, $args[0]);
-            $s->sendMessage(str_replace("{rating}", $args[0], PlotRate::getInstance()->getConfig()->get("rated")));
-            return true;
+            PlotRate::getInstance()->ratePlot($plot, (int)$args[0]);
+            $s->sendMessage(str_replace("{rating}", (string)$args[0], PlotRate::getInstance()->getConfig()->get("rated")));
         } else {
             $s->sendMessage(PlotRate::getInstance()->getConfig()->get("not-in-plot"));
-            return true;
         }
+        return true;
     }
 }
