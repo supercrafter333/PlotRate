@@ -9,12 +9,11 @@ depend: MyPlot
 permissions:
   plotrate.admin:
     default: op
-    children:
-      plotrate.rate.cmd:
-        default: op
-      plotrate.unrate.cmd:
-        default: op
-      plotrate.editrating.cmd:
-        default: op
-      plotrate.plotrate.cmd:
-        default: op
+  plotrate.rate.cmd:
+    default: op
+  plotrate.unrate.cmd:
+    default: op
+  plotrate.editrating.cmd:
+    default: op
+  plotrate.plotrate.cmd:
+    default: op

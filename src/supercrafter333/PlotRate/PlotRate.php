@@ -3,6 +3,8 @@
 namespace supercrafter333\PlotRate;
 
 use MyPlot\Plot;
+use pocketmine\permission\DefaultPermissions;
+use pocketmine\permission\Permission;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
 use pocketmine\utils\SingletonTrait;
@@ -47,6 +49,14 @@ class PlotRate extends PluginBase
         $myPlotCmds->loadSubCommand(new EditratingCommand($this));
         $myPlotCmds->loadSubCommand(new UnrateCommand($this));
         $this->getServer()->getCommandMap()->register("PlotRate", new PlotRateCommand());
+
+        DefaultPermissions::registerPermission(new Permission("plotrate.admin", "Bypass Permission",
+            [
+                "plotrate.rate.cmd",
+                "plotrate.unrate.cmd",
+                "plotrate.editrating.cmd",
+                "plotrate.plotrate.cmd",
+            ]));
     }
 
     /**
