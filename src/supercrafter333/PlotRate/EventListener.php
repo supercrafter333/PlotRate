@@ -19,7 +19,7 @@ class EventListener implements Listener
      */
     public function onPlotEnter(MyPlotPlayerEnterPlotEvent $event)
     {
-        $event->setCancelled(false);
+        $event->cancel(false);
         $player = $event->getPlayer();
         $name = $player->getName();
         $plot = $event->getPlot();

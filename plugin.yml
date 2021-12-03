@@ -1,6 +1,6 @@
 name: PlotRate
-version: 1.1.1-php8.0
-api: 3.0.0
+version: 1.1.2
+api: 4.0.0
 main: supercrafter333\PlotRate\PlotRate
 author: supercrafter333
 load: POSTWORLD

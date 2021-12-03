@@ -7,7 +7,7 @@ use MyPlot\MyPlot;
 use MyPlot\Plot;
 use MyPlot\subcommand\SubCommand;
 use pocketmine\command\CommandSender;
-use pocketmine\Player;
+use pocketmine\player\Player;
 use supercrafter333\PlotRate\PlotRate;
 
 /**
@@ -48,10 +48,10 @@ class RateCommand extends SubCommand
     }
 
     /**
-     * @param CommandSender $s
+     * @param CommandSender|Player $s
      * @return bool
      */
-    public function canUse(CommandSender $s): bool
+    public function canUse(CommandSender|Player $s): bool
     {
         return ($s instanceof Player) and $s->hasPermission("plotrate.rate.cmd");
     }
@@ -66,11 +66,11 @@ class RateCommand extends SubCommand
     }
 
     /**
-     * @param CommandSender $s
+     * @param CommandSender|Player $s
      * @param string[] $args
      * @return bool
      */
-    public function execute(CommandSender $s, array $args): bool
+    public function execute(CommandSender|Player $s, array $args): bool
     {
         if (empty($args[0])) {
             $s->sendMessage("§4Use: §r/p rate <rating: 0-5>");
@@ -80,7 +80,7 @@ class RateCommand extends SubCommand
             $s->sendMessage("§4Use: §r/p rate <rating: 0-5>");
             return true;
         }
-        $plot = MyPlot::getInstance()->getPlotByPosition($s);
+        $plot = MyPlot::getInstance()->getPlotByPosition($s->getPosition());
         if ($plot instanceof Plot) {
             PlotRate::getInstance()->ratePlot($plot, (int)$args[0]);
             $s->sendMessage(str_replace("{rating}", (string)$args[0], PlotRate::getInstance()->getConfig()->get("rated")));

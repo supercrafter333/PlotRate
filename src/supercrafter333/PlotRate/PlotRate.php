@@ -5,6 +5,7 @@ namespace supercrafter333\PlotRate;
 use MyPlot\Plot;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
+use pocketmine\utils\SingletonTrait;
 use supercrafter333\PlotRate\Commands\EditratingCommand;
 use supercrafter333\PlotRate\Commands\PlotRateCommand;
 use supercrafter333\PlotRate\Commands\RateCommand;
@@ -16,25 +17,21 @@ use supercrafter333\PlotRate\Commands\UnrateCommand;
  */
 class PlotRate extends PluginBase
 {
+    use SingletonTrait;
 
     /**
      * That's the version of PlotRate.
      *
      * @var string|float
      */
-    public const VERSION = "1.1.1";
-
-    /**
-     * @var self
-     */
-    protected static PlotRate $instance;
+    public const VERSION = "1.1.2";
 
     /**
      * On plugin loading. (That's before enabling)
      */
-    public function onLoad()
+    public function onLoad(): void
     {
-        self::$instance = $this;
+        self::setInstance($this);
         $this->saveResource("config.yml");
         $this->versionCheck(false); //UPDATE: false
     }
@@ -42,7 +39,7 @@ class PlotRate extends PluginBase
     /**
      * On plugin enabling.
      */
-    public function onEnable()
+    public function onEnable(): void
     {
         $this->getServer()->getPluginManager()->registerEvents(new EventListener(), $this);
         $myPlotCmds = $this->getServer()->getCommandMap()->getCommand('plot');
@@ -55,7 +52,7 @@ class PlotRate extends PluginBase
     /**
      * On plugin disabling
      */
-    public function onDisable()
+    public function onDisable(): void
     {
         $myPlotCmds = $this->getServer()->getCommandMap()->getCommand('plot');
         $myPlotCmds->unloadSubCommand("rate");
@@ -81,14 +78,6 @@ class PlotRate extends PluginBase
                 $this->getLogger()->warning("Your config.yml is outdated but that's not so bad.");
             }
         }
-    }
-
-    /**
-     * @return static
-     */
-    public static function getInstance(): self
-    {
-        return self::$instance;
     }
 
     /**

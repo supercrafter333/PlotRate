@@ -1,9 +1,7 @@
 [![Discord](https://img.shields.io/badge/chat-on%20discord-7289da.svg)](https://discord.gg/ca6cWPpERp)
-# PlotRate - V1.1.1-php8.0   [![](https://poggit.pmmp.io/shield.state/PlotRate)](https://poggit.pmmp.io/p/theSpawn) [![](https://poggit.pmmp.io/shield.dl.total/PlotRate)](https://poggit.pmmp.io/p/PlotRate)
+# PlotRate - V1.1.2   [![](https://poggit.pmmp.io/shield.state/PlotRate)](https://poggit.pmmp.io/p/theSpawn) [![](https://poggit.pmmp.io/shield.dl.total/PlotRate)](https://poggit.pmmp.io/p/PlotRate)
 
-> **WARNING:** This version is not fully tested! Use it at **you own risk**!
-> 
-> Please report bugs in PlotRate with php8.0!
+> **WARNING:** This version is developed for PocketMine-MP 4!
 
 **With this simple plugin you can rate the plots on your plotworld. When a player walk over a rated plot, a title with the reting will send to the player.**
 
@@ -16,7 +14,7 @@ Please leave a star if you like PlotRate. Have fun!
 ### Features
 - rate your plots on your plotworld very easy
 - random plot teleport ([#1](https://github.com/supercrafter333/PlotRate/issues/1))
-- simple configuratio
+- simple configuration
 
 ### TODOs
 - [X] random plot teleport ([#1](https://github.com/supercrafter333/PlotRate/issues/1))

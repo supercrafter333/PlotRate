@@ -7,7 +7,7 @@ use MyPlot\MyPlot;
 use MyPlot\Plot;
 use MyPlot\subcommand\SubCommand;
 use pocketmine\command\CommandSender;
-use pocketmine\Player;
+use pocketmine\player\Player;
 use supercrafter333\PlotRate\PlotRate;
 
 /**
@@ -48,10 +48,10 @@ class UnrateCommand extends SubCommand
     }
 
     /**
-     * @param CommandSender $s
+     * @param CommandSender|Player $s
      * @return bool
      */
-    public function canUse(CommandSender $s): bool
+    public function canUse(CommandSender|Player $s): bool
     {
         return ($s instanceof Player) and $s->hasPermission("plotrate.unrate.cmd");
     }
@@ -66,13 +66,13 @@ class UnrateCommand extends SubCommand
     }
 
     /**
-     * @param CommandSender $s
+     * @param CommandSender|Player $s
      * @param string[] $args
      * @return bool
      */
-    public function execute(CommandSender $s, array $args): bool
+    public function execute(CommandSender|Player $s, array $args): bool
     {
-        $plot = MyPlot::getInstance()->getPlotByPosition($s);
+        $plot = MyPlot::getInstance()->getPlotByPosition($s->getPosition());
         if ($plot instanceof Plot) {
             if (!PlotRate::getInstance()->isRated($plot)) {
                 $s->sendMessage(PlotRate::getInstance()->getConfig()->get("not-rated"));

@@ -5,8 +5,7 @@ namespace supercrafter333\PlotRate\Commands;
 use MyPlot\MyPlot;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
-use pocketmine\command\PluginIdentifiableCommand;
-use pocketmine\Player;
+use pocketmine\player\Player;
 use pocketmine\plugin\Plugin;
 use supercrafter333\PlotRate\PlotRate;
 
@@ -14,7 +13,7 @@ use supercrafter333\PlotRate\PlotRate;
  * Class PlotRateCommand
  * @package supercrafter333\PlotRate\Commands
  */
-class PlotRateCommand extends Command implements PluginIdentifiableCommand
+class PlotRateCommand extends Command
 {
 
     /**
@@ -36,11 +35,11 @@ class PlotRateCommand extends Command implements PluginIdentifiableCommand
     }
 
     /**
-     * @param CommandSender $s
+     * @param CommandSender|Player $s
      * @param string $commandLabel
      * @param array $args
      */
-    public function execute(CommandSender $s, string $commandLabel, array $args): void
+    public function execute(CommandSender|Player $s, string $commandLabel, array $args): void
     {
         $pl = PlotRate::getInstance();
         $cfg = $pl->getConfig();
@@ -67,7 +66,7 @@ class PlotRateCommand extends Command implements PluginIdentifiableCommand
                 }
                 $matches = [];
                 foreach ($pl->getServer()->getOnlinePlayers() as $onlinePlayer) {
-                    $plot = MyPlot::getInstance()->getPlotByPosition($onlinePlayer);
+                    $plot = MyPlot::getInstance()->getPlotByPosition($onlinePlayer->getPosition());
                     if ($plot !== null) {
                         if ($plot->owner === $onlinePlayer->getName())
                         $matches[] = $onlinePlayer->getName();
@@ -80,9 +79,9 @@ class PlotRateCommand extends Command implements PluginIdentifiableCommand
                 }
                 $XplayerName = array_rand($matches);
                 $playerName = $matches[$XplayerName];
-                $player = $pl->getServer()->getPlayer($playerName);
-                $plot = MyPlot::getInstance()->getPlotByPosition($player);
-                $s->teleport($player);
+                $player = $pl->getServer()->getPlayerByPrefix($playerName);
+                $plot = MyPlot::getInstance()->getPlotByPosition($player->getPosition());
+                $s->teleport($player->getPosition());
                 $s->sendMessage(str_replace(["{plot}", "{owner}"], [(string)$plot->X . ';' . (string)$plot->Z, $plot->owner], $cfg->get("pr-a-success")));
                 return;
                 break;

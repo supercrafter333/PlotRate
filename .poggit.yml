@@ -2,7 +2,7 @@
 build-by-default: true
 branches:
 - master
-- php8.0
+- PM4
 projects:
   PlotRate:
     icon: "icon.png"
