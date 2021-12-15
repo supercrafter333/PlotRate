@@ -7,13 +7,14 @@ use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use pocketmine\plugin\Plugin;
+use pocketmine\plugin\PluginOwned;
 use supercrafter333\PlotRate\PlotRate;
 
 /**
  * Class PlotRateCommand
  * @package supercrafter333\PlotRate\Commands
  */
-class PlotRateCommand extends Command
+class PlotRateCommand extends Command implements PluginOwned
 {
 
     /**
@@ -95,7 +96,7 @@ class PlotRateCommand extends Command
     /**
      * @return Plugin
      */
-    public function getPlugin(): Plugin
+    public function getOwningPlugin(): Plugin
     {
         return PlotRate::getInstance();
     }
