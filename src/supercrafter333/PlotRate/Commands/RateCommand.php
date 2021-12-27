@@ -51,7 +51,7 @@ class RateCommand extends SubCommand
      * @param CommandSender|Player $s
      * @return bool
      */
-    public function canUse(CommandSender|Player $s): bool
+    public function canUse(CommandSender $s): bool
     {
         return ($s instanceof Player) and $s->hasPermission("plotrate.rate.cmd");
     }
@@ -70,7 +70,7 @@ class RateCommand extends SubCommand
      * @param string[] $args
      * @return bool
      */
-    public function execute(CommandSender|Player $s, array $args): bool
+    public function execute(CommandSender $s, array $args): bool
     {
         if (empty($args[0])) {
             $s->sendMessage("§4Use: §r/p rate <rating: 0-5>");

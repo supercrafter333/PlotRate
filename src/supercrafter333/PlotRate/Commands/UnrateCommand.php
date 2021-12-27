@@ -51,7 +51,7 @@ class UnrateCommand extends SubCommand
      * @param CommandSender|Player $s
      * @return bool
      */
-    public function canUse(CommandSender|Player $s): bool
+    public function canUse(CommandSender $s): bool
     {
         return ($s instanceof Player) and $s->hasPermission("plotrate.unrate.cmd");
     }
@@ -70,7 +70,7 @@ class UnrateCommand extends SubCommand
      * @param string[] $args
      * @return bool
      */
-    public function execute(CommandSender|Player $s, array $args): bool
+    public function execute(CommandSender $s, array $args): bool
     {
         $plot = MyPlot::getInstance()->getPlotByPosition($s->getPosition());
         if ($plot instanceof Plot) {
