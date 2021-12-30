@@ -36,7 +36,7 @@ You've found a Bug?
 |`/plotrate <help/a/rand/random/info>`|The plotrate command|
 
 ### License:
-This Plugin is licensed under the [Apache License 2.0](/LICENSE)! Plugin by supercrafter333!
+This plugin is licensed under the [Apache License 2.0](/LICENSE)! Plugin by supercrafter333!
 
 ### Credits
 
